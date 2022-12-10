@@ -3,17 +3,15 @@ package com.example.demo.entity;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
 
-import java.util.HashMap;
-import java.util.Map;
-import java.util.stream.Stream;
-
 public interface CodeEnum {
 
     int getId();
 
     @JsonValue
-    String getName();
+    String getCode();
 
     @JsonCreator
-    CodeEnum getEnumByName(String name);
+    CodeEnum getEnumByCode(String code);
+
+    String getName();
 }
