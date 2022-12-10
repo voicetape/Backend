@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Config 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.example.demo.mapper.UserMapper">
-    <resultMap id="userResultMap" type="com.example.demo.entity.User">
-        <id property="id" column="i" />
-        <result property="username"         column="username"   />
-        <result property="nickname"         column="nickname"   />
-        <result property="role"             column="role_id"    />
-        <result property="registerDatetime" column="reg_dttm"   />
-        <result property="modifyDatetime"   column="mod_dttm"   />
+    <resultMap id="userResultMap" type="User">
+        <id     property="id"                   jdbcType="INTEGER"      column="id"         />
+        <result property="username"             jdbcType="VARCHAR"      column="username"   />
+        <result property="nickname"             jdbcType="VARCHAR"      column="nickname"   />
+        <result property="role"                 jdbcType="INTEGER"      column="role_id"    />
+        <result property="registerDatetime"     jdbcType="TIMESTAMP"    column="reg_dttm"   />
+        <result property="modifyDatetime"       jdbcType="TIMESTAMP"    column="mod_dttm"   />
     </resultMap>
 
-    <insert id="createUser" parameterType="com.example.demo.entity.User">
+    <insert id="createUser" parameterType="User">
         INSERT INTO
             user
         SET
@@ -19,7 +19,7 @@
             role_id = #{role.id}
     </insert>
 
-    <update id="updateUserByUsername" parameterType="com.example.demo.entity.User">>
+    <update id="updateUser" parameterType="User">
         UPDATE
             user
         SET
@@ -36,12 +36,12 @@
             username = #{username}
     </delete>
 
-    <select id="getUserByUsername" resultMap="userResultMap">
+    <select id="getUserByUsername" parameterType="string" resultMap="userResultMap">
         SELECT
             id,
             username,
             nickname,
-            role,
+            role_id,
             reg_dttm,
             mod_dttm
         FROM
