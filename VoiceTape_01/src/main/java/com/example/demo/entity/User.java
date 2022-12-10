@@ -5,23 +5,24 @@ import java.time.LocalDate;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 
-import lombok.Data;
-import lombok.NonNull;
+import lombok.*;
 
 @Data
 @JsonDeserialize
 @JsonSerialize
+@Builder
+@AllArgsConstructor(access = AccessLevel.PRIVATE)
 public class User {
 
-	@NonNull private int id; // (1). public 으로 하는 것이 맞는지 잘 모르겠음
+	private int id; // (1). public 으로 하는 것이 맞는지 잘 모르겠음
 
 	@NonNull private String username;
 	@NonNull private String nickname;
-	@NonNull private String emailAddress; // (2). email_address 추가
+	private String emailAddress; // (2). email_address 추가
 
-	@NonNull private int roleId;
-	@NonNull private LocalDate registerDatetime;
-	@NonNull private LocalDate modifyDatetime;
+	@NonNull private Role role;
+	private LocalDate registerDatetime;
+	private LocalDate modifyDatetime;
 
 	// 생성자 매개변수 어떻게 전달할지 고민해보기 --> 일단 대충 틀만 짜기
 
