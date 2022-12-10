@@ -64,6 +64,12 @@ public class UserController {
         return ResponseEntity.ok().build();
     }
 
+    @PostMapping("/validate/username")
+    public ResponseEntity<?> isValidUsername(@Valid @RequestBody IsValidUsernameRequest request) {
+        userService.isValidUsername(request.getUsername());
+        return ResponseEntity.ok().build();
+    }
+
 
     @Data
     static class CreateUserRequest {
@@ -101,5 +107,12 @@ public class UserController {
         private String nickname;
 
         private Role role;
+    }
+
+    @Data
+    static class IsValidUsernameRequest {
+        @NotNull
+        @Size(min = 1, max = 20)
+        private String username;
     }
 }

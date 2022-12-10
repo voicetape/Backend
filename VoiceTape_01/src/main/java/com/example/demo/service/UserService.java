@@ -6,6 +6,8 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.Optional;
+
 @Service
 @RequiredArgsConstructor
 @Transactional
@@ -29,5 +31,13 @@ public class UserService {
 
     public void deleteUserByUsername(String username) {
         userMapper.deleteUserByUsername(username);
+    }
+
+
+    public void isValidUsername(String username) {
+        Optional.ofNullable(userMapper.getUserByUsername(username))
+                .ifPresent(user -> {
+                    throw new IllegalArgumentException("이미 존재하는 사용자입니다.");
+                });
     }
 }
