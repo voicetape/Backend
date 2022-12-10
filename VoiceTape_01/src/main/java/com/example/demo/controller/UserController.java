@@ -48,7 +48,13 @@ public class UserController {
 
     @PutMapping
     public ResponseEntity<?> updateUser(@Valid @RequestBody UpdateUserRequest request) {
-        userService.updateUserByUsername(request.getUsername());
+        User user = User.builder()
+                .username(request.getUsername())
+                .nickname(request.getNickname())
+                .role(request.getRole())
+                .build();
+
+        userService.updateUser(user);
         return ResponseEntity.ok().build();
     }
 
@@ -75,8 +81,8 @@ public class UserController {
     }
 
 
+    @Data
     @Builder
-    @AllArgsConstructor(access = AccessLevel.PRIVATE)
     static class GetUserResponse {
         private String username;
         private String nickname;
