@@ -7,5 +7,11 @@ import com.example.demo.entity.User;
 @Mapper
 public interface UserMapper {
 	
-	void insert(User m_user);
+	void createUser(User user);
+
+	User getUserByUsername(String username);
+
+	void updateUserByUsername(String username);
+
+	void deleteUserByUsername(String username);
 }
