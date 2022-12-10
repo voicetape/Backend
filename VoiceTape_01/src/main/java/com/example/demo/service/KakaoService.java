@@ -2,6 +2,7 @@ package com.example.demo.service;
 
 import java.time.LocalDate;
 
+import com.example.demo.entity.Role;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
@@ -56,8 +57,14 @@ public class KakaoService {
 		//UserDTO userDTO2 = new UserDTO(profile.id, username, nickname, email_address, role_id, reg_dttm, mod_dttm)
 		
 		LocalDate dateAndtime = LocalDate.now();
+
+		User user = User.builder()
+				.username("shpark0308")
+				.nickname(profile.properties.getNickname())
+				.emailAddress(profile.kakaoAccount.getEmail())
+				.role(Role.USER)
+				.build();
 		
-		User user = new User(profile.id, "shpark0308", profile.properties.getNickname(), profile.kakaoAccount.getEmail(), 12345, dateAndtime, dateAndtime);
-		userDAO.insert(user);
+		userDAO.createUser(user);
 	}
 }
