@@ -1,18 +1,38 @@
 package com.example.demo.entity;
 
-import lombok.Data;
-import lombok.NonNull;
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonValue;
+import lombok.RequiredArgsConstructor;
 
-@Data
-public class Role {
-	
-	@NonNull private int id;
-	@NonNull private String code;
-	@NonNull private String name;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.stream.Stream;
 
-	public Role(int m_id, String m_code, String m_name){
-		this.id = m_id;
-		this.code = m_code;
-		this.name = m_name;
-	}
+@RequiredArgsConstructor
+public enum Role implements CodeEnum {
+    ADMIN(1, "ROLE_ADMIN"),
+    USER(2, "ROLE_USER");
+
+    private final int id;
+    private final String name;
+
+    private static final Map<String, Role> nameMap = new HashMap<>();
+    static {
+        Stream.of(Role.values()).forEach(role -> nameMap.put(role.getName(), role));
+    }
+
+    @JsonCreator
+    public Role getEnumByName(String name) {
+        return nameMap.get(name);
+    }
+
+    @JsonValue
+    public String getName() {
+        return name;
+    }
+
+    public int getId() {
+        return id;
+    }
+
 }
