@@ -12,8 +12,10 @@ import java.util.stream.Stream;
 @RequiredArgsConstructor
 public enum Bgm implements CodeEnum {
 
-	ADMIN(1, "ROLE_ADMIN", "관리자"),
-	USER(2, "ROLE_USER", "일반 사용자");
+	CURIOUS_DAY(1, "BGM_CURIOUS_DAY", "신나고 밝은 분위기"),
+	ALL_ABOUT(2, "BGM_ALL_ABOUT", "벅참"),
+	MOON_DANCE(3, "BGM_MOON_DANCE", "잔잔한 재즈"),
+	JINGLE_BELL_FLUTE(4, "BGM_JINGLE_BELL_FLUTE", "크리스마스");
 
 	private final int id;
 
