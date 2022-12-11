@@ -2,9 +2,6 @@ package com.example.demo.entity;
 
 import java.time.LocalDate;
 
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-import com.fasterxml.jackson.databind.annotation.JsonSerialize;
-
 import lombok.*;
 
 @Data
@@ -13,14 +10,14 @@ import lombok.*;
 @AllArgsConstructor(access = AccessLevel.PRIVATE)
 public class Record {
 
-	@NonNull private int id;
-	@NonNull private int userId;
+	private Integer id;
+	private Integer userId;
 	
 	private Voice voice;
 	private Bgm bgm;
 	private int duration;
 	
-	@NonNull private String url;
-	@NonNull private LocalDate registerDatetime;
+	private String url;
+	private LocalDate registerDatetime;
 	
 }
