@@ -12,8 +12,10 @@ import java.util.stream.Stream;
 @RequiredArgsConstructor
 public enum Voice implements CodeEnum {
 
-	ADMIN(1, "ROLE_ADMIN", "관리자"),
-	USER(2, "ROLE_USER", "일반 사용자");
+	BLUE(1, "VOICE_BLUE", "파랑"),
+	FEMALE(2, "VOICE_FEMALE", "여지"),
+	MALE(3, "VOICE_MALE", "남자"),
+	KID(4, "VOICE_KID", "잼민");
 
 	private final int id;
 
