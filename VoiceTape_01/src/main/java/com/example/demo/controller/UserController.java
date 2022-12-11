@@ -66,7 +66,7 @@ public class UserController {
 
     @PostMapping("/validate/username")
     public ResponseEntity<?> isValidUsername(@Valid @RequestBody IsValidUsernameRequest request) {
-        userService.isValidUsername(request.getUsername());
+        userService.validateDuplicateUser(request.getUsername());
         return ResponseEntity.ok().build();
     }
 
