@@ -1,10 +1,34 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Config 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.example.demo.mapper.RecordMapper">
-    <!-- <select id="selectAll" resultType="com.example.demo.dto.DataVO">  -->
-    <!--  SELECT * FROM ex1; -->
-    <!--  </select>  -->
-    <!-- <select id="update" parameterType="com.example.demo.dto.DataVO">  -->
-    <!--  INSERT INTO ex1(key_id, data1) VALUES (#{key_id}, #{data1}) -->
-    <!-- </select> -->
+    <resultMap id="recordResultMap" type="Record">
+        <id     property="id"                   jdbcType="INTEGER"      column="id"         />
+        <result property="userId"               jdbcType="INTEGER"      column="user_id"    />
+        <result property="voice"                jdbcType="INTEGER"      column="voice_id"   />
+        <result property="bgm"                  jdbcType="INTEGER"      column="bgm_id"     />
+        <result property="duration"             jdbcType="INTEGER"      column="duration"   />
+        <result property="url"                  jdbcType="VARCHAR"      column="url"        />
+        <result property="registerDatetime"     jdbcType="TIMESTAMP"    column="reg_dttm"   />
+    </resultMap>
+
+    <select id="getRecordsByUserId" resultMap="recordResultMap"
+            parameterType="int">
+        SELECT
+            *
+        FROM
+            record
+        WHERE
+            user_id = #{userId}
+    </select>
+
+    <insert id="createRecord" parameterType="Record">
+        INSERT INTO
+            record
+        SET
+            user_id = #{userId},
+            voice_id = #{voice.id},
+            bgm_id = #{bgm.id},
+            duration = #{duration},
+            url = #{url}
+    </insert>
 </mapper>
