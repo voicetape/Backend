@@ -24,16 +24,6 @@ public class ErrorResponseHandler {
         return ErrorResponse.of(ErrorCode.INVALID_REQUEST);
     }
 
-    @ExceptionHandler(IllegalArgumentException.class)
-    public ResponseEntity<ErrorResponse> handleIllegalArgumentException(IllegalArgumentException e) {
-        return ErrorResponse.of(ErrorCode.USER_NOT_FOUND);
-    }
-
-    @ExceptionHandler(SQLIntegrityConstraintViolationException.class)
-    public ResponseEntity<ErrorResponse> handleSQLIntegrityConstraintViolationException(SQLIntegrityConstraintViolationException e) {
-        return ErrorResponse.of(ErrorCode.DUPLICATE_RESOURCE);
-    }
-
     @Data
     @Builder
     static class ErrorResponse {
