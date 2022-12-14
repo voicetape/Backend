@@ -1,5 +1,4 @@
-CREATE DATABASE voice_tape;
-USE voice_tape;
+USE voicetape;
 
 CREATE TABLE `role` (
                         `id`	INT                 NOT NULL    AUTO_INCREMENT      COMMENT 'PK (auto increment)',
