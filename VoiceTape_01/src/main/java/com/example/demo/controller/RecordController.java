@@ -26,19 +26,19 @@ public class RecordController {
     private final RecordService recordService;
     private final UserService userService;
 
-    @GetMapping("/upload/url")
-    public ResponseEntity<UploadUrlResponse> getUploadUrl() {
-        String uploadUrl = recordService.getUploadUrl();
+    @GetMapping("/url/{username}")
+    public ResponseEntity<UploadUrlResponse> getUploadUrl(@PathVariable String username) {
+        String uploadUrl = recordService.getUploadUrl(username).toString();
 
         UploadUrlResponse response = UploadUrlResponse.builder()
-                .uploadUrl(uploadUrl)
+                .url(uploadUrl)
                 .build();
 
         return ResponseEntity.ok(response);
     }
 
     @PostMapping
-    public ResponseEntity<?> uploadRecord(@Valid @RequestBody UploadRecordRequest request) {
+    public ResponseEntity<?> createRecord(@Valid @RequestBody CreateRecordRequest request) {
         User user = userService.getUserByUsername(request.getUsername());
         Record record = Record.builder()
                 .userId(user.getId())
@@ -48,7 +48,7 @@ public class RecordController {
                 .url(request.getUploadUrl())
                 .build();
 
-        recordService.uploadRecord(record);
+        recordService.createRecord(record);
         return ResponseEntity.ok().build();
     }
 
@@ -66,11 +66,11 @@ public class RecordController {
     @Data
     @Builder
     static class UploadUrlResponse {
-        private String uploadUrl;
+        private String url;
     }
 
     @Data
-    static class UploadRecordRequest {
+    static class CreateRecordRequest {
 
         @NotNull
         @Size(min = 1, max = 20)
