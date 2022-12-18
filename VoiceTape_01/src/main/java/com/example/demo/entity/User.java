@@ -1,9 +1,6 @@
 package com.example.demo.entity;
 
-import java.time.LocalDate;
-
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import java.util.Date;
 
 import lombok.*;
 
@@ -18,10 +15,7 @@ public class User {
 	@NonNull private String username;
 	@NonNull private String nickname;
 	@NonNull private Role role;
-	private LocalDate registerDatetime;
-	private LocalDate modifyDatetime;
-	private String emailAddress; // (2). email_address 추가
-
-	// 생성자 매개변수 어떻게 전달할지 고민해보기 --> 일단 대충 틀만 짜기
+	private Date registerDatetime;
+	private Date modifyDatetime;
 
 }

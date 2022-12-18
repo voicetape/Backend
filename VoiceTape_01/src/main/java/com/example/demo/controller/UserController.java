@@ -10,6 +10,8 @@ import org.springframework.web.bind.annotation.*;
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
+import java.time.LocalDateTime;
+import java.util.Date;
 
 @RestController
 @RequiredArgsConstructor
@@ -40,6 +42,8 @@ public class UserController {
                 .username(user.getUsername())
                 .nickname(user.getNickname())
                 .role(user.getRole())
+                .createdAt(user.getRegisterDatetime())
+                .updatedAt(user.getModifyDatetime())
                 .build();
 
         return ResponseEntity.ok(response);
@@ -93,6 +97,8 @@ public class UserController {
         private String username;
         private String nickname;
         private Role role;
+        private Date createdAt;
+        private Date updatedAt;
     }
 
 
