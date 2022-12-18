@@ -5,19 +5,21 @@ import com.example.demo.mapper.RecordMapper;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.net.URL;
 import java.util.List;
 
 @Service
 @RequiredArgsConstructor
 public class RecordService {
 
+    private final FileUploadService fileUploadService;
     private final RecordMapper recordMapper;
 
-    public String getUploadUrl() {
-        return null;
+    public URL getUploadUrl(String username) {
+        return fileUploadService.getUploadUrl(username);
     }
 
-    public void uploadRecord(Record record) {
+    public void createRecord(Record record) {
         recordMapper.createRecord(record);
     }
 
