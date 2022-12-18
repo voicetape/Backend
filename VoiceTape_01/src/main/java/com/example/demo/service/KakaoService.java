@@ -61,7 +61,6 @@ public class KakaoService {
 		User user = User.builder()
 				.username("shpark0308")
 				.nickname(profile.properties.getNickname())
-				.emailAddress(profile.kakaoAccount.getEmail())
 				.role(Role.USER)
 				.build();
 		
