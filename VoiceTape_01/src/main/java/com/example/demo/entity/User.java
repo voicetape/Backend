@@ -9,19 +9,19 @@ import lombok.*;
 
 @Data
 @Builder
-@NoArgsConstructor(access = AccessLevel.PRIVATE)
-@AllArgsConstructor(access = AccessLevel.PRIVATE)
+@NoArgsConstructor
+@AllArgsConstructor
 public class User {
 
-	private int id; // (1). public 으로 하는 것이 맞는지 잘 모르겠음
+	private int id; // (1). public �쑝濡� �븯�뒗 寃껋씠 留욌뒗吏� �옒 紐⑤Ⅴ寃좎쓬
 
 	@NonNull private String username;
 	@NonNull private String nickname;
 	@NonNull private Role role;
 	private LocalDate registerDatetime;
 	private LocalDate modifyDatetime;
-	private String emailAddress; // (2). email_address 추가
+	private String emailAddress; // (2). email_address 異붽�
 
-	// 생성자 매개변수 어떻게 전달할지 고민해보기 --> 일단 대충 틀만 짜기
+	// �깮�꽦�옄 留ㅺ컻蹂��닔 �뼱�뼸寃� �쟾�떖�븷吏� 怨좊�쇳빐蹂닿린 --> �씪�떒 ��異� ��留� 吏쒓린
 
 }
