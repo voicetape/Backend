@@ -36,7 +36,7 @@ public class FileUploadService {
     }
 
     private static String getFileKey() {
-        return UUID.randomUUID().toString() + ".mp3";
+        return UUID.randomUUID() + RecordConstant.FILE_EXTENSION.getValue();
     }
 
     private static Map<String, String> getMetadata(String username) {
