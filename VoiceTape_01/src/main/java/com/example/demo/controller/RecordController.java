@@ -40,7 +40,7 @@ public class RecordController {
     @PostMapping
     public ResponseEntity<?> createRecord(@Valid @RequestBody CreateRecordRequest request) {
         User user = userService.getUserByUsername(request.getUsername());
-        Record record = Record.builder()
+        Record newRecord = Record.builder()
                 .userId(user.getId())
                 .voice(request.getVoice())
                 .bgm(request.getBgm())
@@ -48,7 +48,7 @@ public class RecordController {
                 .url(request.getUploadUrl())
                 .build();
 
-        recordService.createRecord(record);
+        recordService.createRecord(newRecord);
         return ResponseEntity.ok().build();
     }
 
