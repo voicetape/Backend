@@ -10,7 +10,6 @@ import org.springframework.web.bind.annotation.*;
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
-import java.time.LocalDateTime;
 import java.util.Date;
 
 @RestController
@@ -21,7 +20,7 @@ public class UserController {
     private final UserService userService;
 
     @PostMapping
-    public ResponseEntity<?> createUser(@Valid @RequestBody CreateUserRequest request) {
+    public ResponseEntity<Object> createUser(@Valid @RequestBody CreateUserRequest request) {
         User user = User.builder()
                 .username(request.getUsername())
                 .nickname(request.getNickname())
@@ -51,7 +50,7 @@ public class UserController {
 
 
     @PutMapping
-    public ResponseEntity<?> updateUser(@Valid @RequestBody UpdateUserRequest request) {
+    public ResponseEntity<Object> updateUser(@Valid @RequestBody UpdateUserRequest request) {
         User user = User.builder()
                 .username(request.getUsername())
                 .nickname(request.getNickname())
@@ -63,13 +62,13 @@ public class UserController {
     }
 
     @DeleteMapping("/{username}")
-    public ResponseEntity<?> deleteUser(@PathVariable String username) {
+    public ResponseEntity<Object> deleteUser(@PathVariable String username) {
         userService.deleteUserByUsername(username);
         return ResponseEntity.ok().build();
     }
 
     @PostMapping("/validate/username")
-    public ResponseEntity<?> isValidUsername(@Valid @RequestBody IsValidUsernameRequest request) {
+    public ResponseEntity<Object> isValidUsername(@Valid @RequestBody IsValidUsernameRequest request) {
         userService.validateDuplicateUser(request.getUsername());
         return ResponseEntity.ok().build();
     }
