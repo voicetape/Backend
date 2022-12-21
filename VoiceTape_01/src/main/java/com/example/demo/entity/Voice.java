@@ -13,7 +13,7 @@ import java.util.stream.Stream;
 public enum Voice implements CodeEnum {
 
 	BLUE(1, "VOICE_BLUE", "파랑"),
-	FEMALE(2, "VOICE_FEMALE", "여지"),
+	FEMALE(2, "VOICE_FEMALE", "여자"),
 	MALE(3, "VOICE_MALE", "남자"),
 	KID(4, "VOICE_KID", "잼민");
 

@@ -15,7 +15,7 @@ public enum Bgm implements CodeEnum {
 	CURIOUS_DAY(1, "BGM_CURIOUS_DAY", "신나고 밝은 분위기"),
 	ALL_ABOUT(2, "BGM_ALL_ABOUT", "벅참"),
 	MOON_DANCE(3, "BGM_MOON_DANCE", "잔잔한 재즈"),
-	JINGLE_BELL_FLUTE(4, "BGM_JINGLE_BELL_FLUTE", "크리스마스");
+	JINGLE_BELL_FLUTE(4, "BGM_JINGLE_BELL", "크리스마스");
 
 	private final int id;
 
